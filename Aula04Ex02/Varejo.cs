@@ -15,7 +15,7 @@ namespace Aula04Ex02
         public void Imprimir()
         {
             StringBuilder builder = new();
-            builder.AppendLine("Impressão Empreiteira:");
+            builder.AppendLine("Impressão Varejo:");
             builder.AppendLine($"CNPJ: {Cnpj}");
             builder.AppendLine($"Razão Social: {RazaoSocial}");
             builder.AppendLine($"Endereço: {Endereco}");
