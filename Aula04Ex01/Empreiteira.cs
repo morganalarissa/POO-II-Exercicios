@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Aula04Ex01
@@ -11,9 +12,19 @@ namespace Aula04Ex01
         public override string RazaoSocial { get; set; }
         public override string Endereco { get; set; }
 
+        public override void Imprimir ()
+        {
+            StringBuilder builder = new();
+            builder.AppendLine("Impressão Empreiteira:");
+            builder.AppendLine();
+            builder.AppendLine($"CNPJ: {Cnpj}");
+            builder.AppendLine($"Razão Social: {RazaoSocial}");
+            builder.AppendLine($"Endereço: {Endereco}");
+            Console.WriteLine(builder.ToString());
+        }
         public override void RealizarVenda()
         {
-            Console.WriteLine("Vendendo serviços");
+            Console.WriteLine("Venda de serviços");
         }
     }
 }

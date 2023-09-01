@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Aula04Ex02
 {
-    public class Varejo : Empresa, IMetodos
+    public class Varejo : Empresa, IOperacoesEmpresa
     {
         public override string Cnpj { get; set; }
         public override string RazaoSocial { get; set; }
@@ -13,17 +14,24 @@ namespace Aula04Ex02
 
         public void Imprimir()
         {
-            Console.WriteLine($"Impressão Varejo:{Environment.NewLine}CNPJ: {Cnpj}{Environment.NewLine}Razão Social: {RazaoSocial}{Environment.NewLine}Endereço: {Endereco}{Environment.NewLine}");
+            StringBuilder builder = new();
+            builder.AppendLine("Impressão Empreiteira:");
+            builder.AppendLine($"CNPJ: {Cnpj}");
+            builder.AppendLine($"Razão Social: {RazaoSocial}");
+            builder.AppendLine($"Endereço: {Endereco}");
+
+            Console.WriteLine(builder.ToString());
         }
 
         public void RealizarVenda()
         {
-            Console.WriteLine("Realizei venda como Varejo");
+            Console.WriteLine("Realizei venda de produto.");
         }
-
+        /*
         public void RealizarServico()
         {
-            Console.WriteLine("Realizei serviço como Varejo");
+            Console.WriteLine("Realizei serviço.");
         }
+        */
     }
 }

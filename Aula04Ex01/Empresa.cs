@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Aula04Ex01
@@ -12,11 +13,7 @@ namespace Aula04Ex01
         public abstract string Endereco {get; set;}
 
 
-        public void Imprimir ()
-        {
-            Console.WriteLine($" CNPJ: {Cnpj}{Environment.NewLine} Razão Social: {RazaoSocial}{Environment.NewLine} Endereço: {Endereco}");
-        }
-
+        public abstract void Imprimir();
         public abstract void RealizarVenda();               
     }
 }

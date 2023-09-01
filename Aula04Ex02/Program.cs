@@ -18,6 +18,7 @@ Adicione um objeto de cada classe do tipo da interface, preenchendo as proprieda
 Invoque os métodos da lista.
 */
 using System;
+using System.Reflection;
 
 namespace Aula04Ex02
 {
@@ -25,7 +26,7 @@ namespace Aula04Ex02
     {
         static void Main(string[] args)
         {
-            List<IMetodos> listaMetodos = new();
+            List<IOperacoesEmpresa> listaInterface = new();
 
             Varejo varejo = new Varejo
             {
@@ -38,30 +39,40 @@ namespace Aula04Ex02
             {
                 Cnpj = "84084840001",
                 RazaoSocial = "House Stark",
-                Endereco = "Wintefel, 150"
+                Endereco = "Wintefell, 150"
             };
 
-            listaMetodos.Add(varejo);
-            listaMetodos.Add(empreiteira);
+            listaInterface.Add(varejo);
+            listaInterface.Add(empreiteira);
 
-            foreach (var item in listaMetodos)
+            foreach (var item in listaInterface)
             {
                 item.Imprimir();
                 item.RealizarVenda();
-                item.RealizarServico();
+                //item.RealizarServico();
                 Console.WriteLine(); 
                 Console.ReadKey();
             }
-            // fiquei na dúvida se era pra fazer igual acima ou se assim: 
-            foreach (IMetodos objeto in listaMetodos)
+            // obs: Tentei usar (reflection) aqui, mas optei por usar diretamente a opção acima.
+
+            /*
+            foreach (var item in listaInterface)
             {
-                //Console.WriteLine($"{objeto.GetType().Name}");
-                objeto.Imprimir();
-                objeto.RealizarVenda();
-                objeto.RealizarServico();
+                Type tipo = item.GetType();
+                MethodInfo[] metodos = tipo.GetMethods(BindingFlags.Public | BindingFlags.Instance);
+
+                foreach (MethodInfo metodo in metodos)
+                {
+                    if (metodo.Name == "Imprimir" || metodo.Name == "RealizarVenda")
+                    {
+                        metodo.Invoke(item, null);
+                    }
+                }
+
                 Console.WriteLine();
-                Console.ReadKey();
             }
+            */
+            
 
         }
     }

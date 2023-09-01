@@ -31,9 +31,12 @@ namespace Aula04Ex01
                 Endereco = "Winterfel, 1000"
             };
 
+           
             varejo.Imprimir();
             varejo.RealizarVenda();
 
+            Console.WriteLine();
+  
             empreiteira.Imprimir();
             empreiteira.RealizarVenda();
 
