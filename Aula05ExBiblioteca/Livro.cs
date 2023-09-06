@@ -12,15 +12,11 @@ namespace Aula05ExBiblioteca
         public DateTime DataEmprestimo { get; private set; }
         public DateTime DataDevolucao { get; private set; }
 
-        public Livro(int codigo, string titulo, string autor, int anoPublicacao, int numPaginas)
+        public Livro(int codigo, string titulo, string autor, int anoPublicacao, int numPaginas) : base(titulo, autor, anoPublicacao, numPaginas) 
         {
-            CodigoLivro = codigo;
-            Titulo = titulo;
-            Autor = autor;
-            AnoPublicacao = anoPublicacao;
-            NumPaginas = numPaginas;
+          
         }
-        public void Emprestar(DateTime dataEmprestimo)
+        public string Emprestar(DateTime dataEmprestimo)
         {
             if (!Emprestado)
             {
@@ -28,27 +24,26 @@ namespace Aula05ExBiblioteca
                 DataEmprestimo = dataEmprestimo;
                 DataDevolucao = dataEmprestimo.AddDays(15);
 
-                Console.WriteLine($"Livro: {Titulo} foi emprestado em {DataEmprestimo}.{Environment.NewLine}Data de devolução prevista para: {DataDevolucao}.");
+                return $"Livro: {Titulo} foi emprestado em ({DataEmprestimo.ToShortDateString()})" +
+                Environment.NewLine + $"Data máxima para devolução: ({DataDevolucao.ToShortDateString()}).";
             }
             else
             {
-                Console.WriteLine($"Livro: {Titulo}' já está emprestado.");
+                return $"Livro: {Titulo} está emprestado.";
             }
         }
 
-        public void Devolver(DateTime dataDevolucao)
+        public string Devolver(DateTime dataDevolucao)
         {
             if (Emprestado)
             {
                 Emprestado = false;
                 DataDevolucao = dataDevolucao;
-                Console.WriteLine($"Livro '{Titulo}' devolvido em {DataDevolucao}.");
+                return $"Livro: {Titulo} devolvido em ({DataDevolucao.ToShortDateString()}).";
             }
             else
-            {
-                Console.WriteLine("Teste");
-            }
+                return "Livro não devolvido";
+            
         }
-
     }
 }

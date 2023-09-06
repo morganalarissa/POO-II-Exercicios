@@ -7,7 +7,7 @@ namespace Aula05ExBiblioteca
 {
     public interface IPodeSerEmprestado
     {
-        void Emprestar(DateTime dataEmprestimo);
-        void Devolver(DateTime dataDevolucao);
+        string Emprestar(DateTime dataEmprestimo);
+        string Devolver(DateTime dataDevolucao);
     }
 }

@@ -7,9 +7,19 @@ namespace Aula05ExBiblioteca
 {
     public abstract class ItemBiblioteca
     {
-        public abstract string Titulo { get; set; }
-        public abstract string Autor { get; set; }
-        public abstract int AnoPublicacao { get; set; }
-        public abstract int NumPaginas { get; set; }
+        public string Titulo { get; set; }
+        public string Autor { get; set; }
+        public int AnoPublicacao { get; set; }
+        public int NumPaginas { get; set; }
+
+        protected ItemBiblioteca(string titulo, string autor, int anoPublicacao, int numPaginas)
+        {
+            Titulo = titulo;
+            Autor = autor;
+            AnoPublicacao = anoPublicacao;
+            NumPaginas = numPaginas;
+        }
+
+
     }
 }

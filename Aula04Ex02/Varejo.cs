@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace Aula04Ex02
 {
     public class Varejo : Empresa, IOperacoesEmpresa
-    //IEnviarNotificacao perguntar porque nao precisa implementar aqui
+    //IEnviarNotificacao nao precisa implementar aqui porque no metodo construtor eu injeto através de _enviarNotificacao quando eu criar uma instancia de varejo.
+    //Isso é IOC (Inversão de Controle) que tem por objetivo remover as dependências (remover o acoplamento) <- conteúdo da LMS
+
     {
         // a linha abaixo é para a instancia de um objeto que implementa a interface "IEnviarNotificacao"
         private readonly IEnviarNotificacao _enviarNotificacao;
@@ -18,7 +20,8 @@ namespace Aula04Ex02
         //esse construtor permite que eu injete a implementação de notificação ->
         // quando eu criar uma instancia de varejo.
         public Varejo (IEnviarNotificacao enviarNotificacao)
-        {
+        {   // recebo interface como parametro
+            //Esse processo de injetar a classe no construtor chama-se Injeção de Dependência. 
             _enviarNotificacao = enviarNotificacao;
         }
         public void Imprimir()
@@ -36,7 +39,7 @@ namespace Aula04Ex02
         {
             Console.WriteLine("Realizei venda de produto.");
             
-            EnviarMensagemCliente(); // Chama o método de notificação aqui
+            EnviarMensagemCliente(); 
         }
 
         //chama o método EnviarMensagemCliente() na instância de IEnviarNotificacao
